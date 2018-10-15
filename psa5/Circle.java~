@@ -1,0 +1,63 @@
+// DO NOT import from javafx package
+import java.awt.*;
+import java.util.*;
+
+import objectdraw.*;
+
+public class Circle extends Shape {
+    private Point center;
+    private int radius;
+
+    public Circle() {
+        // TODO
+    }
+
+    public Circle(Point center, int radius) {
+        // TODO
+    }
+
+    public Circle(Circle c) {
+        // TODO
+
+    }
+
+    public Point getCenter() {
+        // TODO
+    }
+
+    private void setCenter(Point point) {
+        // TODO
+    }
+
+    public int getRadius(){
+        // TODO
+    }
+
+    private void setRadius(int radius) {
+        // TODO
+    }
+
+    @Override
+    public void move(int deltaX, int deltaY) {
+        // TODO
+    }
+
+    @Override
+    public String toString() {
+        // TODO
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        // TODO
+    }
+
+    public void draw(DrawingCanvas canvas) {
+        // TODO
+    }
+
+    public void draw(DrawingCanvas canvas, Color c, boolean fill) {
+        // TODO
+    }
+
+}

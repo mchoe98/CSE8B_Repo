@@ -1,0 +1,53 @@
+// DO NOT import from javafx package
+import java.awt.*;
+import java.util.*;
+
+import objectdraw.*;
+
+public class Square extends ARectangle {
+
+    private int side;
+
+    public Square() {
+        // TODO
+    }
+
+    public Square(int x, int y, int side) {
+        // TODO
+    }
+
+    public Square(Point upperLeft, int side) {
+        // TODO
+    }
+
+    public Square(Square square) {
+        // TODO
+    }
+
+    private void setSide(int side) {
+        // TODO
+    }
+
+    public int getSide() {
+        // TODO
+    }
+
+    @Override
+    public String toString() {
+        // TODO
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        // TODO
+    }
+
+    public void draw(DrawingCanvas canvas) {
+        // TODO
+    }
+
+    public void draw(DrawingCanvas canvas, Color c, boolean fill) {
+        // TODO
+    }
+
+}

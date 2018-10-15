@@ -1,0 +1,48 @@
+// DO NOT import from javafx package
+import java.awt.*;
+import java.util.*;
+
+import objectdraw.*;
+
+public abstract class ARectangle extends Shape {
+    private Point upperLeft;
+
+    public ARectangle() {
+        // TODO
+    }
+
+    public ARectangle(String name, int x, int y) {
+        // TODO
+    }
+
+    public ARectangle(String name, Point upperLeft) {
+        // TODO
+    }
+
+    public ARectangle(ARectangle r) {
+        // TODO
+    }
+
+    public Point getUpperLeft() {
+        // TODO
+    }
+
+    private void setUpperLeft(Point point) {
+        // TODO
+    }
+
+    @Override
+    public void move(int deltaX, int deltaY) {
+        // TODO
+    }
+
+    @Override
+    public String toString() {
+        // TODO
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        // TODO
+    }
+}

@@ -1,0 +1,61 @@
+// DO NOT import from javafx package
+import java.awt.*;
+import java.util.*;
+
+import objectdraw.*;
+
+public class CSE8B_Line extends Shape {
+    private Point start;
+    private Point end;
+
+    public CSE8B_Line() {
+        // TODO
+    }
+
+    public CSE8B_Line(Point start, Point end) {
+        // TODO
+    }
+
+    public CSE8B_Line(CSE8B_Line line) {
+        // TODO
+    }
+
+    public Point getStart() {
+        // TODO
+    }
+
+    private void setStart(Point start) {
+        // TODO
+    }
+
+    public Point getEnd() {
+        // TODO
+    }
+
+    private void setEnd(Point end) {
+        // TODO
+    }
+
+    @Override
+    public void move(int deltaX, int deltaY) {
+        // TODO
+    }
+
+    @Override
+    public String toString() {
+        // TODO
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        // TODO
+    }
+
+    public void draw(DrawingCanvas canvas) {
+        // TODO
+    }
+
+    public void draw(DrawingCanvas canvas, Color c, boolean fill) {
+        // TODO
+    }
+}

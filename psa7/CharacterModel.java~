@@ -1,0 +1,25 @@
+/* Your header */
+	
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.io.*;
+import java.util.Random;
+import java.util.Scanner;
+
+public class CharacterModel extends WordModel {
+
+	public CharacterModel (int degree) {
+		super(degree);
+	}
+
+	public int trainFromText(String content) {
+        // TODO
+        return 0;
+    }
+
+    public String generate(int count) {
+        // TODO
+        return "";
+    }
+
+}

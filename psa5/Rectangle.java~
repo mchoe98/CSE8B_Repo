@@ -1,0 +1,60 @@
+// DO NOT import from javafx package
+import java.awt.*;
+import java.util.*;
+
+import objectdraw.*;
+
+public class Rectangle extends ARectangle {
+    private int width;
+    private int height;
+
+    public Rectangle() {
+        // TODO
+    }
+
+    public Rectangle(int x, int y, int width, int height) {
+        // TODO
+    }
+
+    public Rectangle(Point upperLeft, int width, int height) {
+        // TODO
+    }
+
+    public Rectangle(Rectangle r) {
+        // TODO
+    }
+
+    public int getHeight(){
+        // TODO
+    }
+
+    private void setHeight(int height) {
+        // TODO
+    }
+
+    public int getWidth(){
+        // TODO
+    }
+
+    private void setWidth(int width) {
+        // TODO
+    }
+
+    @Override
+    public String toString() {
+        // TODO
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        // TODO
+    }
+
+    public void draw(DrawingCanvas canvas) {
+    	// TODO
+    }
+
+    public void draw(DrawingCanvas canvas, Color c, boolean fill) {
+        // TODO
+    }
+}

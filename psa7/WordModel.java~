@@ -1,0 +1,212 @@
+/* Your header */
+/* File Header:
+ * 2-4 Sentences
+ *
+ * Mark Choe
+ * mychoe@ucsd.edu
+ *
+ * Class Header:
+ * 1-2 Sentences
+ */
+
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.io.*;
+import java.util.Random;
+import java.util.Scanner;
+
+public class WordModel {
+
+   protected HashMap<ArrayList<String>, HashMap<String, Integer>>
+      predictionMap;
+   protected HashMap<ArrayList<String>, ArrayList<String>> cache;
+
+   protected int degree;
+   protected Random random;
+
+   public WordModel (int degree) {
+      // TODO
+      this.predictionMap = new HashMap<ArrayList<String>,HashMap<String,
+         Integer>>();
+      this.cache = new HashMap<ArrayList<String>, ArrayList<String>>();
+      this.degree = degree;
+      this.random = new Random();
+   }
+
+   /** This method
+    *  @param: the words that make up the prefix, and the prediction
+    *  for this prefix
+    *  @return: N/A 
+    * */
+   public void incrementPrediction(ArrayList<String> prefix, String
+         prediction){
+      // TODO
+      // Adding to the predictionMap
+      if (predictionMap.containsKey(prefix)==false){
+         HashMap<String,Integer> innerMap = new HashMap<String,Integer>();
+         Integer startCount = 0;
+         innerMap.put(prediction,startCount);
+         predictionMap.put(prefix,innerMap);
+      }
+      // Incrementing the count
+      if (predictionMap.containsKey(prefix)){
+         HashMap<String,Integer> innerMap = new HashMap<String,Integer>();
+         innerMap = predictionMap.get(prefix);
+         Integer currentValue = innerMap.get(prediction);
+         innerMap.put(prediction,currentValue+1);
+         predictionMap.put(prefix,innerMap);
+      }
+   }
+
+
+   public int trainFromText(String content) {
+      // TODO
+      // Transforming content into an ArrayList
+      Scanner scanner = new Scanner(content);
+      ArrayList<String> contentList = new ArrayList<String>();
+      String word;
+      int count = 0;
+      while(scanner.hasNext()){
+         word = new String(scanner.next().toLowerCase());
+         contentList.add(word);
+         count++;
+      }
+      ArrayList<String> prefix = new ArrayList<String>();
+      int tracker = 0;
+      // Utilizing incrementPrediction
+      for (int index = 0; index<contentList.size()-degree; index++){
+         while(tracker < degree){
+            prefix.add(contentList.get(index+tracker));
+            tracker++;
+         }
+         if(tracker == degree){
+            incrementPrediction(prefix,contentList.get(index+tracker));
+            prefix.clear();
+            tracker = 0;
+         }
+      }
+      return count;
+   }
+
+
+   public ArrayList<String> getFlattenedList(ArrayList<String> prefix){
+      // TODO
+      // Checking the cache for the prefix
+      if (cache.containsKey(prefix)){
+         return cache.get(prefix);
+         // Adding to the cache
+      } else {
+         HashMap<String,Integer> innerMap = new HashMap<String,Integer>
+            (predictionMap.get(prefix));
+         innerMap = new HashMap<String,Integer>(innerMap);
+         ArrayList<String> keys = new ArrayList<String>(innerMap.keySet());
+         keys = new ArrayList<String>(keys);
+         ArrayList<String> cacheValue = new ArrayList<String>();
+         cacheValue = new ArrayList<String>(cacheValue);
+         for (int index = 0; index < keys.size(); index++){
+            for (int index2 = 0; index2 < 
+                  innerMap.get(keys.get(index));index2++){
+               cacheValue.add(keys.get(index));
+            }
+         }
+         cache.put(prefix,cacheValue);
+         return cache.get(prefix);
+      }
+   }
+
+
+   public String generateNext(ArrayList<String> prefix) {
+      // TODO
+      ArrayList<String> flattenedList = new ArrayList<String>
+         (getFlattenedList(prefix));
+      flattenedList = new ArrayList<String>(flattenedList);
+      int randomN = random.nextInt(flattenedList.size());
+      String word = new String(flattenedList.get(randomN));
+      word = new String(word);
+      return word;
+   }
+
+
+   public String generate(int count) {
+      // TODO
+      // Creating an array of the words for the text
+      ArrayList<ArrayList<String>> keys =
+         new ArrayList<ArrayList<String>>(predictionMap.keySet());
+      keys = new ArrayList<ArrayList<String>>(keys);
+      int randomN = random.nextInt(keys.size());
+      ArrayList<String> prefix = 
+         new ArrayList<String>(keys.get(randomN));
+      prefix = new ArrayList<String>(prefix);
+      String output = null;
+      // Edge Case: the count is less than the first few words
+      if (count < degree+1){
+         for (int index = 0; index < count; index++){
+            output = new String(output + prefix.get(index) + " ");
+            output = new String(output);
+            return output;
+         }
+         if (count == 0){
+            return null;
+         }
+      }
+      ArrayList<String> text = new ArrayList<String>(prefix);
+      text = new ArrayList<String>(text);
+      int tracker = degree-1;
+      while (tracker < count){
+         String prediction = new String(generateNext(prefix));
+         prediction = new String(prediction);
+         prefix.add(prediction);
+         prefix.remove(0);
+         text.add(prediction);
+         tracker++;
+      }
+      // Converting the array into a string
+      for (int index = 0; index < text.size(); index++){
+         output = new String(output + text.get(index) + " ");
+         output = new String(output);
+      }
+      System.out.println(output);
+      return output;
+   }
+
+   /** return reference to predictionMap */
+   public HashMap<ArrayList<String>, HashMap<String, Integer>> getPredictionMap() {
+      return this.predictionMap;
+   }
+
+   /* return reference to cache */
+   public HashMap<ArrayList<String>, ArrayList<String>> getCache(){
+      return this.cache;
+   }
+
+   /* return a reference to the random object */
+   public Random getRandom(){
+      return this.random;
+   }
+
+   /* return the degree */
+   public int getDegree(){
+      return this.degree;
+   }
+
+
+   /* provided for debug purposes,
+      but really, provided so students can look at how to iterate HashMap */ 
+   public void printMap(){
+
+      /* for each key (prefix) in predictionMap, 
+         print prefix, print all predictions with counts */
+      for(ArrayList<String> prefix: predictionMap.keySet()){
+         System.out.println("Prefix: " + prefix + ":");
+
+         HashMap<String, Integer> freqMap = predictionMap.get(prefix);
+         /* for each key (prediction) in the subsequen HashMap, 
+            print prediction, print count */
+         for (String prediction: freqMap.keySet()){
+            System.out.printf("\tPrediction: \"%s\"   Count: %d\n", 
+                  prediction, freqMap.get(prediction));           
+         }
+      }       
+   }
+
+}

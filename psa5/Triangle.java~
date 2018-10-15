@@ -1,0 +1,71 @@
+// DO NOT import from javafx package
+import java.awt.*;
+import java.util.*;
+
+import objectdraw.*;
+
+public class Triangle extends Shape {
+    private Point p1;
+    private Point p2;
+    private Point p3;
+
+    public Triangle() {
+        // TODO
+    }
+
+    public Triangle(Point p1, Point p2, Point p3) {
+        // TODO
+    }
+
+    public Triangle(Triangle tri) {
+        // TODO
+    }
+
+    public Point getPoint1() {
+        // TODO
+    }
+
+    private void setPoint1(Point p1) {
+        // TODO
+    }
+
+    public Point getPoint2() {
+        // TODO
+    }
+
+    private void setPoint2(Point p2) {
+        // TODO
+    }
+
+    public Point getPoint3() {
+        // TODO
+    }
+
+    private void setPoint3(Point p3) {
+        // TODO
+    }
+
+    @Override
+    public void move(int deltaX, int deltaY) {
+        // TODO
+    }
+
+    @Override
+    public String toString() {
+        // TODO
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        // TODO
+    }
+
+    public void draw(DrawingCanvas canvas) {
+        // TODO
+    }
+
+    public void draw(DrawingCanvas canvas, Color c, boolean fill) {
+        // TODO
+    }
+
+}
