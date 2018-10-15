@@ -1,0 +1,67 @@
+
+import java.awt.*;
+import java.util.Random;
+
+public class Leopard extends Omnivore{
+	protected static int confidence = 10;
+	//constructor
+	public Leopard(){
+		displayName = "Li";
+		color = Color.orange;
+		random = new Random(2018);
+	}
+
+	@Override
+		protected void win(){
+			if (confidence < 10){
+				confidence++;
+			}
+		}
+
+	@Override
+		protected void lose(){
+			if (confidence > 0){
+				confidence--;
+			}
+		}
+
+	@Override
+		protected Direction getMove(){
+			if (count > 19){
+				count = 0;
+			}
+			if (count >= 0 && count < 5){
+				count++;
+				return Direction.SOUTH;
+			} else if (count >= 5 && count < 10){
+				count++;
+				return Direction.WEST;
+			} else if (count >= 10 && count < 15){
+				count++;
+				return Direction.NORTH;
+			} else {
+				count++;
+				return Direction.EAST;
+			}
+		}
+
+	@Override
+		protected boolean eat(){
+			int chance = random.nextInt(100);
+			if (chance < confidence*10){
+				return true;
+			}
+			return false;
+		}
+
+	@Override
+		protected Attack fight(String opponent){
+			if (opponent.equals("O") || confidence > 5){
+				return Attack.ROAR;
+			} else if (confidence < 2){
+				return Attack.FORFEIT;
+			} else{
+				return Attack.SCRATCH;
+			}
+		}
+}

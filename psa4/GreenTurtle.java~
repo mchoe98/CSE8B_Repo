@@ -1,0 +1,73 @@
+
+import java.awt.*;
+import java.util.Random;
+
+public class GreenTurtle extends Turtle{
+	protected Direction move;	
+	public GreenTurtle(){
+		displayName = "G";
+		color = Color.green;
+		random = new Random(9);
+		move = Direction.NORTH;
+		attack = Attack.ROAR;
+	}
+
+	protected void generateMove(){
+		if (move == Direction.SOUTH){
+			move = Direction.EAST;
+		} else if (move == Direction.EAST){
+			move = Direction.WEST;
+		} else if (move == Direction.WEST){
+			move = Direction.NORTH;
+		} else {
+			move = Direction.SOUTH;
+		}
+	}
+
+	@Override
+		protected void generateAttack(){
+			if (attack == Attack.ROAR){
+				attack = Attack.SCRATCH;
+			} else{
+				attack = Attack.ROAR;
+			}
+		}
+
+	@Override
+		protected boolean eat(){
+			if (count < 3){
+				count++;
+				generateMove();
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+	@Override
+		protected Attack fight(String opponent){
+			if (opponent.equals("S")){
+				return Attack.ROAR;
+			} else if (opponent.equals("Zzz")){
+				return Attack.FORFEIT;
+			} else{
+				return attack;
+			}
+		}
+
+	@Override
+		protected void win(){
+			generateMove();
+			generateAttack();
+		}
+
+	@Override
+		protected void mate(){
+			generateAttack();
+		}
+
+	@Override
+		protected Direction getMove(){
+			return move;
+		}
+}

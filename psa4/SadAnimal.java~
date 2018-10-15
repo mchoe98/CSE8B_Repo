@@ -1,0 +1,93 @@
+/*
+ * @author CSE8B Winter 2018 Staff
+ * 02/04/18
+ */
+
+/* EDIT THIS FILE  */
+
+import java.awt.*;
+import java.util.Random;
+
+/* File Header:
+ * This file extends from Critter.java
+ * This file contains a constructor and methods
+ * that objects of this file's class can perform.
+ *
+ * Mark Choe
+ * mychoe@ucsd.edu
+ * 
+ * Class Header:
+ * The purpose of this class is to allow for a working
+ * sad animal to be created.
+ */
+/* Partially implements an animal's characteristics. */
+public class SadAnimal extends Critter {
+	protected String displayName;
+	// You can add your own instance variables
+	protected Color color;
+	protected boolean eaten;
+	protected Random random;
+	protected int count;
+	// Constructor: initialize the object.
+	public SadAnimal () {
+		// TODO
+		displayName = ":-(";
+		color = Color.red;
+		eaten = false;
+	}
+
+	// Movement method of SadAnimal that takes in empty parameter
+	// Returns a direction that the critter would move to
+
+	/** Return the direction the sad animal will move.
+	 * @param N/A
+	 * @return the direction the sad animal will move
+	 * */
+	@Override
+		protected Direction getMove() {
+			// TODO
+			Direction direction = Direction.WEST;
+			if (eaten == true){
+				direction = Direction.SOUTH;
+			}
+			return direction;
+		}
+
+	/** Return whether or not the sad animal will eat.
+	 * @param N/A
+	 * @return true if the animal will eat or false if the
+	 * animal will not eat
+	 * */
+	@Override
+		protected boolean eat() {
+			// TODO
+			return true;
+		}
+
+	/* This method tells the simulator what color I should be. */
+
+
+	/** Return what color the sad animal should be
+	 * @param N/A
+	 * @return the color the animal should be
+	 * */
+	@Override
+		protected Color getColor() {
+			// TODO
+			return this.color;
+		}
+
+	// This method returns the string representation of SadAnimal
+
+	/** Return the string representation of the animal
+	 * @param N/A
+	 * @return the string representation of the animal
+	 * */
+	@Override
+		public String toString() {
+			return this.displayName;
+		}
+
+	//Any other methods you need to write or overload
+
+}

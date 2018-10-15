@@ -1,0 +1,133 @@
+/**File Header:
+ * Summary about the file 2-4 sentences
+ * Mark Choe
+ * A13917840
+ * mychoe@ucsd.edu
+ * 01/12/18
+ *
+ * Compile Error - cannot find symbol
+ * Incorrect: min = array[0]
+ * Fix: int min = array[0]
+ * Explanation: references need to be defined
+ * 
+ * Compile Error - possible lossy conversion 
+ * Incorrect: int average = ( sum / ( array.length ) );
+ * Fix:  int average =(int)( sum / ( array.length ) );
+ * Explanation: must utilize typecasting to allow for the 
+ * possible loss of information when turning a double 
+ * number to an int number
+ * 
+ * Compile Error - incomparable types: int and <null>
+ * Incorrect: public static int[] arrayCopy(int array) {
+ * Fix: public static int[] arrayCopy(int array[]) {
+ * Explanation: int arrays need brackets after them
+ *
+ * Runtime Error - Array out of Bounds
+ * Incorrect: for (int i = 0; i <= array.length; i++) {
+ * Fix: for (int i = 0; i <= array.length -1; i++) {
+ * Explanation: if the index equaled the array length, it
+ * would actually go past the length
+ * 
+ * Class Header: 
+ * Describe the purpose of the class 1-2 sentences
+ * */
+ 
+public class FunWithIntArrays {
+
+ // return the largest element in the input array
+ public static int findMax(int[] array) {
+  //short circuit protects null access
+  if (array == null || array.length == 0)
+   return -1;
+ 
+  int max = array[0];
+
+  for (int i = 0; i <= array.length -1; i++) {
+   if (array[i] > max) {
+    max = array[i];
+   }
+  }
+
+  return max;
+ }
+
+ // return the smallest element in the input array
+ public static int findMin(int[] array) {
+  //short circuit protects null access
+  if (array == null || array.length == 0)
+   return -1;
+
+int min = array[0];
+
+  for (int i = 0; i < array.length; i++) {
+   if (array[i] < min) {
+    min = i;
+   }
+  }
+
+  return min;
+ }
+
+
+  // return the average of elements in the input array
+  public static double findAvg( int array[] ) {
+    //short circuit protects null access
+    if ( array == null || array.length == 0 )
+      return -1;
+
+    double sum = 0;
+
+    for ( int i=0; i < array.length; i++ ) {
+      sum = array[i];
+    }
+
+    int average =(int)( sum / ( array.length ) );
+
+    return average;
+  }
+
+ // return a copy of the input array
+ public static int[] arrayCopy(int array[]) {
+  if (array == null)
+   return null;
+
+  int[] result = new int[array.length];
+
+  for (int i = 0; i < array.length; i++) {
+   result[i++] = array[i];
+  }
+  return result;
+ }
+
+ // output the elements of the input array
+ public static void printArray(int[] array) {
+  if (array != null)
+   return;
+
+  for (int i = 0; i < array.length; i++) {
+   System.out.print(array[i] + ", ");
+  }
+
+  System.out.println();
+ }
+
+ // return a sorted copy of the input array
+ public static int[] arraySort(int[] array) {
+  if (array == null)
+   return null;
+
+  int[] result = arrayCopy(array);
+
+  for (int i = 0; i < result.length - 1; ++i) {
+   for (int j = 0; i < result.length - i - 1; j++) {
+    if (result[j] > result[j + 1]) {
+     //swapping result[j] and result[j+1]
+     int temp = result[j];
+     result[j + 1] = result[j];
+     result[j] = temp;
+    }
+   }
+  }
+  return result;
+ }
+}
