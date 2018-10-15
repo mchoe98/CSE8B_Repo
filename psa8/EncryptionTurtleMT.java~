@@ -1,0 +1,51 @@
+/* Starter Code by Hans Yuan WI 18 */
+
+import turtleClasses.Turtle;
+import turtleClasses.World;
+import java.awt.*;
+import java.util.*;
+
+
+public class EncryptionTurtleMT extends DrawingTurtle implements Runnable {
+
+    // DON'T CHANGE
+    public final static int WORLD_WIDTH = 800;
+    public final static int WORLD_HEIGHT = 120;
+
+    // CHANGE BACK TO 75 WHEN DONE
+    public final static int DELAY = 75;
+
+    // These constants may be helpful:
+    public final static int CHAR_WIDTH = 40;
+    public final static int LINE_PADDING = 40;
+    public final static int CHAR_SPACE = CHAR_WIDTH + LINE_PADDING;
+
+    private char charr;
+    private int x, y;
+
+    /* private constructor -- this should not be called by anyone */
+    private EncryptionTurtleMT( - /* Decide what parameters you would like */ - ){
+        // Must fix before being able to compile
+    }
+
+    /* multithreaded turtle code starts here; we call this method */
+    public static void encryptMT(String originalStr, int rotation) {
+    }
+
+
+    private static char letterOperationMT(char original, int rotation) {
+      return '\0';
+    }
+
+    private static boolean validString(String rawInput) {
+        return true;
+    }
+
+    public void run(){
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello, this is the Main method of EncryptionTurtleMT");
+    }
+
+} // End of public class EncryptionTurtleMT extends Turtle
