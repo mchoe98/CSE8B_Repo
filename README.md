@@ -1,1 +1,1 @@
-
+A collection of random class projects for a UCSD Java class. These projects include the UX and UI design of a functional 2048 game, a Markov chain text generator, a screen saver, and multi-threading exercise.
