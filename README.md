@@ -1,1 +1,1 @@
-A collection of random class projects for a UCSD Java class. These projects include the backend and frontend design of a functional 2048 game, a Markov chain text generator, a screen saver, and a multi-threading exercise.
+A collection of random class projects for a UCSD Java class. The responses to the written portions of these assignments are also included. These projects include the backend and frontend design of a functional 2048 game, a Markov chain text generator, a screen saver, and a multi-threading exercise.
